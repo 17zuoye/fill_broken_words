@@ -1,0 +1,49 @@
+static/bower_components
+static/node_modules
+node_modules
+static/compressed
+static/.webassets-cache/
+data
+submodules_git
+
+.vagrant
+
+*.pyc
+*.log
+*.pickle
+build
+*.txt
+*.db
+*.json
+*.yml
+*.iso
+*.box
+*.DS_Store
+*.out
+*.zip
+*.cPickle
+*.db-journal
+*.idnamecache
+*.list
+*.jpg
+*.csv
+
+env
+lib # virtualenv
+bin # virtualenv
+include # virtualenv
+man
+share
+txt
+
+########################
+# misc / editors
+########################
+*~
+.netbeans
+nbproject
+.idea
+*.mchg
+
+dist
+*.egg-info
