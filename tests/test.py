@@ -2,13 +2,15 @@
 
 # 处理后的copus应该只更新对应部分，其他部分不动。
 
-import os, sys
+import os
+import sys
 root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, root_dir)
 
 
 import unittest
 from fill_broken_words.fill_broken_words import FillBrokenWords, possible_connection_suggests
+
 
 class TestFillBrokenWords(unittest.TestCase):
 
@@ -43,7 +45,7 @@ class TestFillBrokenWords(unittest.TestCase):
                     [" uby  ython", ["R", "P"], "Ruby Python"],
                     ["e    e        ", ["y"], "eye        "],
 
-                    ["ki   ", ["ck"], "kick"], # 5111b965a3109d262ad98d2f TODO 还是错了
+                    ["ki   ", ["ck"], "kick"],  # 5111b965a3109d262ad98d2f TODO 还是错了
                     ["fl       er", ["w", "o"], "flower"],
                     ["ch    mn", ["e", "i", "y"], "chimney"],
                     #[" p n (打开) ", ["e", "o"], "open (打开) "],
@@ -59,14 +61,15 @@ class TestFillBrokenWords(unittest.TestCase):
                     ["s   fety r   les", ["a", "u"], "safety rules"],
                     ["Can you t   p    fast?", ["y", "e"], "Can you type fast?"],
                     ["l   phant", ["e", "e"], "elephant"],
-                    ][1:11] #:28] # [0:1] # 
+                    ][1:11]  # :28] # [0:1] # 
 
         for sentence, strs, sentence2 in corpus:
-            print "="*150
+            print "=" * 150
             print "[original sentence] \"%s\"" % sentence
             print
             results = FillBrokenWords.process(sentence, strs, True)
-            print; print "[tests]", results[0]
+            print
+            print "[tests]", results[0]
             self.assertEqual(results[0][0], sentence2)
 
     def test_process(self):
@@ -87,6 +90,7 @@ class TestFillBrokenWords(unittest.TestCase):
         self.assertEqual(sorted([(str(group1[0]) + str(group1[1])) for group1 in results[0]]), ['cakes', 'father', 'green', 'me', 'picture'])
 
 
-if __name__ == '__main__': unittest.main()
+if __name__ == '__main__':
+    unittest.main()
 
 # ["  cl    set        s    ster            d    sk    st    dy", ["e", "i", "o", "u"]]

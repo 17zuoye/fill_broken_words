@@ -18,7 +18,7 @@ def possible_connection_suggests(blanks_vs_fill_groups):
 
         blanks = [blank1 for blank1 in blank_to_fills.keys() if blank1.marked is False]
         select_blanks_len = int(round(math.sqrt(len(blanks))))
-        select_blanks = sorted(blanks, key = \
+        select_blanks = sorted(blanks, key =
                 lambda blank1: (len(blank1), len(blank1.items())))[0:select_blanks_len]
 
         for blank1 in select_blanks:
@@ -27,7 +27,7 @@ def possible_connection_suggests(blanks_vs_fill_groups):
                 # TODO maybe blank1 has two or more fill2s
                 blank1.marked, fill2s[0].marked = True, True
 
-                pre_result2 = pre_result1 + [ [blank1, fill2s[0]] ]
+                pre_result2 = pre_result1 + [[blank1, fill2s[0]]]
 
                 if result_len == len(pre_result2):
                     final_results.append(pre_result2)
@@ -36,12 +36,11 @@ def possible_connection_suggests(blanks_vs_fill_groups):
 
     select_one_link_blank_with_fill(blanks_vs_fill_groups)
 
-    final_results = uniq_seqs(final_results, lambda result1: tuple(sorted([str(s1) for s1 in itertools.chain(*result1)])) )
+    final_results = uniq_seqs(final_results, lambda result1: tuple(sorted([str(s1) for s1 in itertools.chain(*result1)])))
 
-    final_results = [ [ [result1[0].item, result1[1].item] for result1 in results1] for results1 in final_results ]
+    final_results = [[[result1[0].item, result1[1].item] for result1 in results1] for results1 in final_results]
 
     return final_results
-
 
 
 class TwoLinksDict(defaultdict):
@@ -60,7 +59,7 @@ class TwoLinksDict(defaultdict):
 
             # reset .marked
             blank1.marked = bool(blank1 in flatten_marked_items)
-            fill1 .marked = bool(fill1  in flatten_marked_items)
+            fill1 .marked = bool(fill1 in flatten_marked_items)
 
             blank1.append(fill1)
             fill1.append(blank1)
@@ -68,8 +67,13 @@ class TwoLinksDict(defaultdict):
         return [fill_to_blanks, blank_to_fills]
 
 
-class FillToBlanksDict(TwoLinksDict): pass
-class BlankToFillsDict(TwoLinksDict): pass
+class FillToBlanksDict(TwoLinksDict):
+    pass
+
+
+class BlankToFillsDict(TwoLinksDict):
+    pass
+
 
 class String(object):
 
@@ -79,19 +83,32 @@ class String(object):
         self.fill_blank_dict = dict1
         self.marked = False
 
-    def __str__(self): return str(self.item)
-    def __len__ (self): return len(str(self))
+    def __str__(self):
+        return str(self.item)
+
+    def __len__ (self):
+        return len(str(self))
+
     def __eq__(self, another):
-        if type(another) != type(self): return False
+        if type(another) != type(self):
+            return False
         # depend on item's __eq__ method
         return self.item == another.item
 
-    def __repr__(self): return "<%s \"%s\" marked=%s>" % (select_type(self), self.item, self.marked)
+    def __repr__(self):
+        return "<%s \"%s\" marked=%s>" % (select_type(self), self.item, self.marked)
 
-    def append(self, item1): self.fill_blank_dict[self].append(item1)
-    def items(self): return self.fill_blank_dict[self]
-    def unmarked_items(self): return [i1 for i1 in self.items() if not i1.marked]
-    def   marked_items(self): return [i1 for i1 in self.items() if i1.marked]
+    def append(self, item1):
+        self.fill_blank_dict[self].append(item1)
+
+    def items(self):
+        return self.fill_blank_dict[self]
+
+    def unmarked_items(self):
+        return [i1 for i1 in self.items() if not i1.marked]
+
+    def marked_items(self):
+        return [i1 for i1 in self.items() if i1.marked]
 
     store = dict()
 
@@ -104,5 +121,10 @@ class String(object):
         cls.store[str1] = cls(str1, dict1)
         return cls.store[str1]
 
-class Fill(String): pass
-class Blank(String): pass
+
+class Fill(String):
+    pass
+
+
+class Blank(String):
+    pass

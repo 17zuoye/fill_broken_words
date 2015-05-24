@@ -9,13 +9,15 @@ setup(
     author_email=''.join(reversed("moc.liamg@emojvm")),
     description='Fill broken words',
     long_description="Consider there's a sentence, which has a half part of one word outside of it, e.g. ['How many s                 of pizza do you want?', ['lices']], so we need to fix it correctly.",
-    packages=['fill_broken_words', 'fill_broken_words/patterns_vs_word',],
+    packages=['fill_broken_words',
+              'fill_broken_words/patterns_vs_word', ],
     include_package_data=True,
     zip_safe=False,
     platforms='any',
     install_requires=[
         'etl_utils',
         'pyenchant',
+        'bunch',
         'split_block',
     ],
     classifiers=[

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class PatternsVsWordGroup(list):
 
     def has_common_items(self):

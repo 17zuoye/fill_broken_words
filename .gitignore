@@ -47,3 +47,6 @@ nbproject
 
 dist
 *.egg-info
+
+.tox
+.coverage

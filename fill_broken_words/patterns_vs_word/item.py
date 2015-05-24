@@ -2,6 +2,7 @@
 
 from split_block import SplitBlock
 
+
 class PatternsVsWord(object):
 
     def __init__(self, patterns, word):
