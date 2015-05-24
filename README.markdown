@@ -1,5 +1,12 @@
 Fill broken words
 ===============================
+[![Build Status](https://img.shields.io/travis/17zuoye/fill_broken_words/master.svg?style=flat)](https://travis-ci.org/17zuoye/fill_broken_words)
+[![Coverage Status](https://coveralls.io/repos/17zuoye/fill_broken_words/badge.svg)](https://coveralls.io/r/17zuoye/fill_broken_words)
+[![Health](https://landscape.io/github/17zuoye/fill_broken_words/master/landscape.svg?style=flat)](https://landscape.io/github/17zuoye/fill_broken_words/master)
+[![Download](https://img.shields.io/pypi/dm/fill_broken_words.svg?style=flat)](https://pypi.python.org/pypi/fill_broken_words)
+[![License](https://img.shields.io/pypi/l/fill_broken_words.svg?style=flat)](https://pypi.python.org/pypi/fill_broken_words)
+
+
 Consider there's a sentence, which has a half part of one word outside of it, e.g. ["How many s                 of pizza do you want?", ["lices"]], so we need to fix it correctly.
 
 Algorithm Processing Graph
